@@ -3,11 +3,26 @@ use strict;
 use warnings;
 
 package MooseX::Types::Path::Class::MoreCoercions;
-# ABSTRACT: No abstract given for MooseX::Types::Path::Class::MoreCoercions
+# ABSTRACT: Coerce stringable objects to work with MooseX::Types::Path::Class
 # VERSION
 
-# Dependencies
-use autodie 2.00;
+use Moose;
+use MooseX::Types::Stringlike qw/Stringable/;
+use MooseX::Types::Path::Class ();
+use Path::Class ();
+use MooseX::Types -declare => [qw( Dir File )];
+
+subtype Dir,
+  as MooseX::Types::Path::Class::Dir;
+
+subtype File,
+  as MooseX::Types::Path::Class::File;
+
+coerce Dir,
+  from Stringable, via { Path::Class::Dir->new("$_") };
+
+coerce File,
+  from Stringable, via { Path::Class::File->new("$_") };
 
 1;
 
@@ -15,20 +30,59 @@ use autodie 2.00;
 
 =head1 SYNOPSIS
 
-  use MooseX::Types::Path::Class::MoreCoercions;
+  ### specification of type constraint with coercion
+
+  package Foo;
+
+  use Moose;
+  use MooseX::Types::Path::Class::MoreCoercions qw/Dir/;
+
+  has dir_path => (
+    is => 'ro',
+    isa => 'Dir',
+    coerce => 1,
+  );
+
+  ### usage in code
+
+  my $tmp = File::Temp->new;
+
+  Foo->new( file_path => $tmp ); # coerced to Path::Class::File
 
 =head1 DESCRIPTION
 
-This module might be cool, but you'd never know it from the lack
-of documentation.
+This module extends L<MooseX::Types::Path::Class> to allow objects
+that have overloaded stringification to be coerced into L<Path::Class>
+objects.
 
-=head1 USAGE
+=head1 SUBTYPES
 
-Good luck!
+This module uses L<MooseX::Types> to define the following subtypes.
+
+=head2 Dir
+
+C<Dir> is a subtype of C<MooseX::Types::Path::Class::Dir>.  Objects with
+overloaded stringification are coerced as strings if coercion is enabled.
+
+=head2 File
+
+C<File> is a subtype of C<MooseX::Types::Path::Class::File>.  Objects with
+overloaded stringification are coerced as strings if coercion is enabled.
+
+=head1 CAVEATS
+
+=head2 Usage with File::Temp
+
+Because an argument is stringified and then coerced into a Path::Class object,
+no reference to the original File::Temp argument is held.  Be sure to hold an
+extenal reference to it to avoid immediate cleanup of the object at the end
+of the enclosing scope.
 
 =head1 SEE ALSO
 
-Maybe other modules do related things.
+=for :list
+* L<Moose::Manual::Types>
+* L<MooseX::Types::Path::Class>
 
 =cut
 
