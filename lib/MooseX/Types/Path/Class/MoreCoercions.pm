@@ -35,11 +35,11 @@ coerce File,
   package Foo;
 
   use Moose;
-  use MooseX::Types::Path::Class::MoreCoercions qw/Dir/;
+  use MooseX::Types::Path::Class::MoreCoercions qw/File/;
 
-  has dir_path => (
+  has filename => (
     is => 'ro',
-    isa => 'Dir',
+    isa => 'File',
     coerce => 1,
   );
 
@@ -47,7 +47,7 @@ coerce File,
 
   my $tmp = File::Temp->new;
 
-  Foo->new( file_path => $tmp ); # coerced to Path::Class::File
+  Foo->new( filename => $tmp ); # coerced to Path::Class::File
 
 =head1 DESCRIPTION
 
@@ -75,7 +75,7 @@ overloaded stringification are coerced as strings if coercion is enabled.
 
 Because an argument is stringified and then coerced into a Path::Class object,
 no reference to the original File::Temp argument is held.  Be sure to hold an
-extenal reference to it to avoid immediate cleanup of the object at the end
+external reference to it to avoid immediate cleanup of the object at the end
 of the enclosing scope.
 
 =head1 SEE ALSO
