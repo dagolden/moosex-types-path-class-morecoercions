@@ -54,7 +54,7 @@
    "provides" : {
       "MooseX::Types::Path::Class::MoreCoercions" : {
          "file" : "lib/MooseX/Types/Path/Class/MoreCoercions.pm",
-         "version" : "0.002"
+         "version" : "0.003"
       }
    },
    "release_status" : "stable",
@@ -70,6 +70,6 @@
          "web" : "https://github.com/dagolden/moosex-types-path-class-morecoercions"
       }
    },
-   "version" : "0.002"
+   "version" : "0.003"
 }
 
