@@ -4,6 +4,8 @@ Revision history for MooseX-Types-Path-Class-MoreCoercions
 
     - Correctly inherit coercions from MooseX-Types-Path-Class
 
+    - Add AbsFile and AbsDir types and coercions
+
 0.001     2012-03-27 12:44:29 EST5EDT
 
     - Initial release

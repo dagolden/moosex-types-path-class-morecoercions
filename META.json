@@ -1,10 +1,10 @@
 {
-   "abstract" : "Coerce stringable objects to work with MooseX::Types::Path::Class",
+   "abstract" : "More powerful coercion than MooseX::Types::Path::Class",
    "author" : [
       "David Golden <dagolden@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300009, CPAN::Meta::Converter version 2.120630",
+   "generated_by" : "Dist::Zilla version 4.300014, CPAN::Meta::Converter version 2.120630",
    "license" : [
       "apache_2_0"
    ],
@@ -46,6 +46,7 @@
          "requires" : {
             "File::Find" : "0",
             "File::Temp" : "0",
+            "File::pushd" : "0",
             "Test::More" : "0.96"
          }
       }
@@ -53,7 +54,7 @@
    "provides" : {
       "MooseX::Types::Path::Class::MoreCoercions" : {
          "file" : "lib/MooseX/Types/Path/Class/MoreCoercions.pm",
-         "version" : "0.001"
+         "version" : "0.002"
       }
    },
    "release_status" : "stable",
@@ -69,6 +70,6 @@
          "web" : "https://github.com/dagolden/moosex-types-path-class-morecoercions"
       }
    },
-   "version" : "0.001"
+   "version" : "0.002"
 }
 
