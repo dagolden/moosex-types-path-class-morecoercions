@@ -12,17 +12,17 @@ use MooseX::Types::Path::Class ();
 use Path::Class ();
 use MooseX::Types -declare => [qw( Dir File )];
 
-subtype Dir,
-  as MooseX::Types::Path::Class::Dir;
+subtype Dir, as MooseX::Types::Path::Class::Dir;
+coerce( Dir,
+  @{ MooseX::Types::Path::Class::Dir->coercion->type_coercion_map },
+  from Stringable, via { Path::Class::Dir->new("$_") },
+);
 
-subtype File,
-  as MooseX::Types::Path::Class::File;
-
-coerce Dir,
-  from Stringable, via { Path::Class::Dir->new("$_") };
-
-coerce File,
-  from Stringable, via { Path::Class::File->new("$_") };
+subtype File, as MooseX::Types::Path::Class::File;
+coerce( File,
+  @{ MooseX::Types::Path::Class::File->coercion->type_coercion_map },
+  from Stringable, via { Path::Class::File->new("$_") },
+);
 
 1;
 

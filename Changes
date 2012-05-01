@@ -2,6 +2,8 @@ Revision history for MooseX-Types-Path-Class-MoreCoercions
 
 {{$NEXT}}
 
+    - Correctly inherit coercions from MooseX-Types-Path-Class
+
 0.001     2012-03-27 12:44:29 EST5EDT
 
     - Initial release
