@@ -61,13 +61,13 @@ coerce( AbsFile,
 
   has filename => (
     is => 'ro',
-    isa => 'File',
+    isa => File,
     coerce => 1,
   );
 
   has directory => (
     is => 'ro',
-    isa => 'AbsDir',
+    isa => AbsDir,
     coerce => 1,
   );
 

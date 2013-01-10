@@ -2,6 +2,8 @@ Revision history for MooseX-Types-Path-Class-MoreCoercions
 
 {{$NEXT}}
 
+    - Fixed SYNOPSIS typo [issue#1 by Tommy Stanton]
+
 0.002     2012-05-01 13:05:08 America/New_York
 
     - Correctly inherit coercions from MooseX-Types-Path-Class
