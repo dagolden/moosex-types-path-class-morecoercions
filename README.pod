@@ -1,3 +1,5 @@
+=pod
+
 =head1 NAME
 
 MooseX::Types::Path::Class::MoreCoercions - More powerful coercion than MooseX::Types::Path::Class
@@ -17,13 +19,13 @@ version 0.003
 
   has filename => (
     is => 'ro',
-    isa => 'File',
+    isa => File,
     coerce => 1,
   );
 
   has directory => (
     is => 'ro',
-    isa => 'AbsDir',
+    isa => AbsDir,
     coerce => 1,
   );
 
@@ -107,7 +109,7 @@ L<MooseX::Types::Path::Class>
 =head2 Bugs / Feature Requests
 
 Please report any bugs or feature requests through the issue tracker
-at L<http://rt.cpan.org/Public/Dist/Display.html?Name=MooseX-Types-Path-Class-MoreCoercions>.
+at L<https://rt.cpan.org/Public/Dist/Display.html?Name=MooseX-Types-Path-Class-MoreCoercions>.
 You will be notified automatically of any progress on your issue.
 
 =head2 Source Code
@@ -117,7 +119,7 @@ public review and contribution under the terms of the license.
 
 L<https://github.com/dagolden/moosex-types-path-class-morecoercions>
 
-  git clone https://github.com/dagolden/moosex-types-path-class-morecoercions.git
+  git clone git://github.com/dagolden/moosex-types-path-class-morecoercions.git
 
 =head1 AUTHOR
 
